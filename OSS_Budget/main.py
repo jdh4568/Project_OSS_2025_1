@@ -20,7 +20,13 @@ def main():
             except ValueError:
                 print("잘못된 금액입니다.\n")
                 continue
-            budget.add_expense(category, description, amount)
+
+            impulse = input("충동구매인가요? (Y/N): ").strip().upper()
+            if impulse not in ["Y", "N"]:
+                print("Y 또는 N으로 입력해주세요.\n")
+                continue
+
+            budget.add_expense(category, description, amount, impulse)
 
         elif choice == "2":
             budget.list_expenses()

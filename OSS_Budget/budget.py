@@ -5,11 +5,16 @@ class Budget:
     def __init__(self):
         self.expenses = []
 
-    def add_expense(self, category, description, amount):
+    def add_expense(self, category, description, amount, impulse):
         today = datetime.date.today().isoformat()
-        expense = Expense(today, category, description, amount)
+        expense = Expense(today, category, description, amount, impulse)
         self.expenses.append(expense)
         print("지출이 추가되었습니다.\n")
+
+        if len(self.expenses) >= 3:
+                last_three = self.expenses[-3:]
+                if all(e.impulse.upper() == "Y" for e in last_three):
+                    print("!최근 3건 이상 충동구매입니다! 소비 습관을 점검해보세요.\n")
 
     def list_expenses(self):
         if not self.expenses:
