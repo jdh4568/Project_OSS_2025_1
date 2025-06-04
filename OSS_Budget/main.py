@@ -9,7 +9,8 @@ def main():
         print("1. 지출 추가")
         print("2. 지출 목록 보기")
         print("3. 총 지출 보기")
-        print("4. 종료")
+        print("4. 게임 과금 한도 설정")
+        print("5. 종료")
         choice = input("선택 > ")
 
         if choice == "1":
@@ -29,6 +30,14 @@ def main():
             budget.total_spent()
 
         elif choice == "4":
+                    try:
+                        limit = int(input("게임 과금 한도(원): "))
+                        print("게임 과금시 카테고리를 \"게임 과금\"으로 입력해 주십시오.\n")
+                        budget.set_game_limit(limit)
+                    except ValueError:
+                        print("잘못된 입력입니다.\n")
+
+        elif choice == "5":
             print("가계부를 종료합니다.")
             break
 
